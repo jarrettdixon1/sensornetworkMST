@@ -145,7 +145,11 @@ public class SensorNetworkMST  extends JFrame{
 					
 					
 				
-					g.edgelist = g.Kruskal();
+					g.edgelist = g.Kruskal(q);
+					
+					// et = eelec k + eamp k l^2
+					// er = eelec k
+					//transmission energy is 2*eelc k + eamp kl^2
 					/*int i = 0;
 					for(Edge e : g.edgelist){
 						System.out.println("Edge " + i++ + " source: " + e.source + " dest: " + e.dest);

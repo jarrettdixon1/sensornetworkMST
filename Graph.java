@@ -406,20 +406,42 @@ public class Graph {
 			return false;
 		
 	}
-	public ArrayList<Edge> Kruskal(){
+	public ArrayList<Edge> Kruskal(int q){
+		double numBytes = q;
+		double numBits = q*8;
+		// k = num bits
+		// l = distance
+		//er = elec k
+		//et = elec k + eamp k l^2
+		//eamp = 100pj/bit/m^2 = 100pj/numbits/
+		//elec = 100nj/bit = 100nj/numbits
+		//etotal = 2et + er
+		double pj = 0; // pj
+		double nj = 0;// nj
+		
 		Collections.sort(this.edges);
+		int cost =  0;
 		
 		ArrayList<Edge> mst = new ArrayList<>();
 		
+		System.out.println("Mst Edges: ");
 		for(Edge e : this.edges){
 			int u = e.source;
 			int v = e.dest;
 			if( find( this.parent, u) != find( this.parent, v) ){
 				mst.add(e);
 				union(this.parent, u, v);
+				cost += e.weight;
+				System.out.println("Node: " + u + " to Node: " + v);
+				
+				pj += 2*100/numBits;
+				nj += 100/numBits/Math.pow(e.weight, 2);
+				
 			}
 			
+			
 		}
+		System.out.println("Total cost: " + pj + "pj + " + nj + " nj") ;
 		return mst;
 	}
 	
