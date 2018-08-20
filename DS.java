@@ -10,7 +10,7 @@ import java.util.Random;
  * initial position
  * 
  */
-public class DS {
+public class DS {// Disk Scheduling 
     public static void main(String[] args){
 	int min = Integer.parseInt(args[0]);
 	int max = Integer.parseInt(args[1]);
